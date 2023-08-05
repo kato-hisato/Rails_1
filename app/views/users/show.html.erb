@@ -1,0 +1,35 @@
+<h3>詳細情報</h3>
+
+<div><%= link_to "←一覧に戻る", :users %></div>
+
+<div><%= link_to "編集", :edit_user %></div>
+
+<table>
+  <tr>
+    <th>title</th>
+    <td><%= @user.title %></td>
+  </tr>
+  <tr>
+    <th>開始日</th>
+    <td><%= @user.start.strftime('%Y/%m/%d') %></td>
+  </tr>
+  <tr>
+    <th>終了日</th>
+    <td><%= @user.stop.strftime('%Y/%m/%d')%></td>
+  </tr>
+  <tr>
+    <th>終日</th>
+    <td>
+      <% if @user.syuuzitu == "1" %>
+        ○
+      <% else %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>スケジュールメモ</th>
+    <td><%= @user.introduction %></td>
+  </tr>
+ </table>
+ 
+ 

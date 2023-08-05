@@ -1,0 +1,35 @@
+<h3>予定の編集</h3>
+ 
+<%= render "shared/error", obj: @user %>
+
+<%= form_with model: @user do |f| %>
+<table>
+  <tr>
+    <th><%= f.label :title ,"タイトル" %></th>
+    <td><%= f.text_field :title%></td>
+  </tr>
+  <tr>
+    <th><%= f.label :start ,"開始日" %></th>
+    <td><%= f.date_field :start, min: Time.zone.now%></td>
+  </tr>
+  <tr>
+    <th><%= f.label :stop ,"終了日" %></th>
+    <td><%= f.date_field :stop, min: Time.zone.now%></td>
+  </tr>
+  <tr>
+    <th><%= f.label :syuuzitu ,"終日" %></th>
+    <td><%= f.check_box :syuuzitu %></td>
+  </tr>
+  <tr>
+    <th><%= f.label :introduction ,"スケジュールメモ" %></th>
+    <td><%= f.text_area :introduction %></td>
+  </tr>
+</table>
+ 
+<div>
+  <ul>
+    <li><%= f.submit "保存する"%></li>
+    <li><%= link_to "キャンセル", :users %></li>
+  </ul>
+</div>
+<% end %>
