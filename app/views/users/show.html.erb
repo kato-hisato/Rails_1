@@ -1,35 +1,37 @@
-<h3>詳細情報</h3>
+<h3 class="subTitle">詳細情報</h3>
 
-<div><%= link_to "←一覧に戻る", :users %></div>
+<div>
+  <%= link_to "←一覧に戻る", :users ,class: "linkBack"%>
+  <%= link_to "編集する", :edit_user ,class: "btnColor linkEdit right"%>
+</div>
 
-<div><%= link_to "編集", :edit_user %></div>
-
-<table>
-  <tr>
-    <th>title</th>
-    <td><%= @user.title %></td>
-  </tr>
-  <tr>
-    <th>開始日</th>
-    <td><%= @user.start.strftime('%Y/%m/%d') %></td>
-  </tr>
-  <tr>
-    <th>終了日</th>
-    <td><%= @user.stop.strftime('%Y/%m/%d')%></td>
-  </tr>
-  <tr>
-    <th>終日</th>
-    <td>
-      <% if @user.syuuzitu == "1" %>
-        ○
-      <% else %>
-      <% end %>
-    </td>
-  </tr>
-  <tr>
-    <th>スケジュールメモ</th>
-    <td><%= @user.introduction %></td>
-  </tr>
- </table>
- 
+<div class="container">
+  <table>
+    <tr>
+      <th class="formSize">タイトル</th>
+      <td><%= @user.title %></td>
+    </tr>
+    <tr>
+      <th class="formSize">開始日</th>
+      <td><%= @user.start.strftime('%Y/%m/%d') %></td>
+    </tr>
+    <tr>
+      <th class="formSize">終了日</th>
+      <td><%= @user.stop.strftime('%Y/%m/%d')%></td>
+    </tr>
+    <tr>
+    <th class="formSize">終日</th>
+      <td>
+        <% if @user.syuuzitu == "1" %>
+          ○
+        <% else %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th class="formSize">スケジュールメモ</th>
+      <td><%= @user.introduction %></td>
+    </tr>
+  </table>
+</div>
  

@@ -36,6 +36,7 @@ class UsersController < ApplicationController
       end
     end
   
+    protect_from_forgery :except => [:destroy]
     def destroy
       @user = User.find(params[:id])
       @user.destroy
