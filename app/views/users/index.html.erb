@@ -1,0 +1,57 @@
+
+<div class="pageTitle">
+  <h3 class="subTitle">予定一覧</h3>
+  <p class="buttonPrimary"><%= link_to "+新規追加", :new_user ,class: "btnColor"%></p>
+</div>
+
+<% if flash[:notice] %>
+  <p class="notice subTitle"><%= flash[:notice] %></p>
+<% end %>
+
+<div class="container">
+  <table class="TableResponsive">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>タイトル</th>
+        <th>開始日</th>
+        <th>終了日</th>
+        <th>終日</th>
+        <th>更新日</th>
+        <th></th>
+        <th></th>
+        <th></th>
+     </tr>
+    </thead>
+
+    <tbody>
+      <% i = 0 %>
+      <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.title %></td>
+        <td><%= user.start.strftime('%Y/%m/%d') %></td>
+        <td><%= user.stop.strftime('%Y/%m/%d') %></td>
+        <td>
+          <% if user.syuuzitu == "1" %>
+            ○
+          <% else %>
+          <% end %>
+        </td>
+        <td><%= user.updated_at.to_s(:datetime_jp) %></td>
+        <td><%= link_to "参照", user %></td>
+        <td><%= link_to "編集", [:edit, user] %></td>
+        <td><%= link_to "削除", user, method: :delete, data: { confirm: "本当に削除しますか？" } %></td> 
+      </tr>
+      <% i += 1 %>
+      <% end %>
+    </tbody>
+  </table>
+  <footer >
+    <div class="FooterBody" >
+      <span>予定合計&nbsp;&nbsp;<span class=""><%= i %></span>件</span>
+      <span>本日の日付&nbsp;<%= Date.today %></span>
+    </div>
+  </footer>
+</div>
+
